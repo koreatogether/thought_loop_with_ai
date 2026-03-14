@@ -1,0 +1,13 @@
+# Default: ignore everything
+/*
+
+# Allow specific root files
+!/.gitignore
+!/index.html
+!/style.css
+!/app.js
+!/bg.png
+!/progressLog.md
+
+# Ignore all subdirectories
+/*/
