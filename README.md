@@ -1,16 +1,20 @@
-# React + Vite
+# ThoughtBloom (생각 성장 엔진)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 💡 프로젝트 의도
+ThoughtBloom은 단순한 아이디어의 씨앗에서 시작하여, AI와의 단계별 상호작용을 통해 생각을 거대한 '덩어리'로 키워나가는 **사고 확장 도구**입니다.
 
-Currently, two official plugins are available:
+사용자가 자신의 생각을 쏟아내면 AI가 날카로운 질문을 던지고 즉각적인 피드백을 제공하며, 이 과정이 시각적인 '생각 웹(Thought Web)'으로 기록됩니다. 논리적인 흐름을 점검하고 반론을 통해 아이디어를 단련하며, 최종적으로 완성된 생각의 지도를 만들어내는 것이 이 프로젝트의 핵심 목표입니다.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## ✨ 주요 기능
+- **12단계 사고 루프**: 씨앗 심기부터 완성 결정까지 체계적인 사고 프로세스 제공
+- **실시간 AI 코칭**: Claude/Gemini 엔진을 선택하여 맞춤형 질문과 피드백 수신
+- **시각적 생각 웹**: 물리 기반 그래프를 통해 아이디어의 확장 과정을 시각화
+- **반응형 디자인**: 다크 모드 기반의 프리미엄 UI 및 직관적인 인터페이스
 
-## React Compiler
+## 🛠️ 기술 스택
+- **Frontend**: React + Vite
+- **AI**: Anthropic Claude / Google Gemini (API 연동)
+- **Deployment**: GitHub Pages
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 📜 라이선스
+MIT License - [LICENSE](./LICENSE) 파일을 참고하세요.
