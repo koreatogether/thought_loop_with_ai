@@ -1,0 +1,171 @@
+:root {
+    --bg-color: #050508;
+    --card-bg: rgba(20, 20, 30, 0.7);
+    --accent-primary: #00f2ff;
+    --accent-secondary: #8b5cf6;
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glow-shadow: 0 0 20px rgba(0, 242, 255, 0.2);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    overflow: hidden; /* Canvas will handle panning */
+    height: 100vh;
+    width: 100vw;
+}
+
+#bg-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: linear-gradient(rgba(5, 5, 8, 0.8), rgba(5, 5, 8, 0.8)), url('bg.png');
+    background-size: cover;
+    background-position: center;
+    opacity: 1;
+}
+
+.app-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    padding: 2rem;
+    background: linear-gradient(to bottom, rgba(5, 5, 8, 0.8), transparent);
+    z-index: 100;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -1px;
+}
+
+.instruction {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+#canvas-container {
+    flex: 1;
+    position: relative;
+    cursor: grab;
+    overflow: hidden;
+}
+
+#thought-canvas {
+    position: absolute;
+    transform-origin: 0 0;
+    transition: transform 0.1s ease-out;
+}
+
+.node {
+    position: absolute;
+    min-width: 120px;
+    min-height: 80px;
+    max-width: 400px;
+    padding: 1.2rem;
+    background: var(--card-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transition: transform 0.1s ease-out, box-shadow 0.3s;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    transform: translate(-50%, -50%);
+    cursor: default;
+    user-select: none;
+}
+
+.node.dragging {
+    z-index: 1000;
+    cursor: grabbing;
+}
+
+.node textarea {
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    width: 100%;
+    resize: none;
+    outline: none;
+    font-size: 1rem;
+    line-height: 1.4;
+    overflow: hidden;
+}
+
+.node-controls {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.node:hover .node-controls, .node.active .node-controls {
+    opacity: 1;
+}
+
+button.icon-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    color: var(--text-primary);
+    padding: 0.5rem;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+button.icon-btn:hover {
+    background: var(--accent-primary);
+    color: #000;
+}
+
+.connection {
+    position: absolute;
+    pointer-events: none;
+    z-index: 1;
+    stroke: rgba(255, 255, 255, 0.15);
+    stroke-width: 1.5;
+    fill: none;
+    transition: stroke 0.3s;
+}
+
+.node:hover + .connection, .connection:hover {
+    stroke: var(--accent-primary);
+    stroke-width: 2;
+}
+
+/* Animations */
+@keyframes bloom {
+    0% { transform: scale(0.5); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.bloom-anim {
+    animation: bloom 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
