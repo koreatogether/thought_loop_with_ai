@@ -5,6 +5,8 @@
 !/.gitignore
 !/eslint.config.js
 !/vite.config.js
+!/tsconfig.json
+!/tsconfig.node.json
 
 # Allow Core Project Files
 !/index.html
@@ -25,3 +27,10 @@ dist
 *.log
 .DS_Store
 .venv
+
+# Private Backend API
+src_api/
+docs/
+*.zip
+*.7z
+*.rar
